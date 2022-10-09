@@ -1,9 +1,15 @@
 from django.db import models
-from django.db.models import Model
-class Thing(Model):
+class Thing(models.Model):
     name = models.CharField(
     max_length=30,
+    unique=True,
+    blank=False,
     )
-    description = models.TextField()
-    quantity = models.IntegerField()
+    description = models.CharField(
+    unique=False,
+    max_length=120,
+    )
+    quantity = models.IntegerField(
+    max_length=100,
+    )
 # Create your models here.
