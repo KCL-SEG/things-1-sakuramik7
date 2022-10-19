@@ -10,6 +10,6 @@ class Thing(models.Model):
     max_length=120,
     )
     quantity = models.IntegerField(
-    max_length=100,
+    
     )
 # Create your models here.
