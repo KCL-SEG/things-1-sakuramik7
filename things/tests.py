@@ -1,15 +1,27 @@
 from django.test import TestCase
-from .models import Thing
+from things.models import Thing
 from django.core.exceptions import ValidationError
 
-class model(TestCase):
-    def test_number(self):
-        self.user = Thing.objects.create(
+class testing_model(TestCase):
+    def set_up(self):
+        self.thing = Thing(
         name = "Jjj",
-        description="Hi I am JJJ",
-        quantity=101,
+        description = "Hi I am JJJ",
+        quantity = 100,
         )
+
+    def test_number(self):
+        self.quantity= 101
+        self.not_working()
+
+    def should_work(self):
+        try:
+            self.thing.full_clean()
+        except(ValidationError):
+            self.fail("This should work")
+
+    def not_working(self):
         with self.assertRaises(ValidationError):
-            self.user.full_clean()
+            self.thing.full_clean()
 
 # Create your tests here.
