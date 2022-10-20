@@ -10,6 +10,7 @@ class Thing(Model):
     description = models.CharField(
     unique=False,
     max_length=120,
+    blank=True
     )
     quantity = models.IntegerField(
     validators=[MaxValueValidator(100), MinValueValidator(0)]
